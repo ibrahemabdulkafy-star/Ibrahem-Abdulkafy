@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشيخ إبراهيم عبد الكافي - قارئ القرآن الكريم</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(184, 134, 11, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(184, 134, 11, 0.06) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px 0 rgba(184, 134, 11, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(184, 134, 11, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b8860b;
+            text-shadow: 0 2px 10px rgba(184, 134, 11, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #b8860b;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 2px 10px rgba(184, 134, 11, 0.5); }
+            to { text-shadow: 0 2px 20px rgba(184, 134, 11, 0.8); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(184, 134, 11, 0.2), transparent);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover {
+            color: #b8860b;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="8" fill="none" stroke="rgba(184,134,11,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
+            opacity: 0.3;
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-20px) translateY(-20px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #b8860b 0%, #daa520 50%, #b8860b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(184, 134, 11, 0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 5px rgba(184, 134, 11, 0.3)); }
+            to { filter: drop-shadow(0 0 15px rgba(184, 134, 11, 0.6)); }
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            color: #b8860b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            animation: fadeInLeft 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInRight 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hadith {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            color: #daa520;
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-right: 3px solid #b8860b;
+            background: rgba(184, 134, 11, 0.1);
+            border-radius: 0 10px 10px 0;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            margin: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: #b8860b;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #b8860b, transparent);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: #b8860b;
+            margin-bottom: 1rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .profile-card {
+            padding: 2rem;
+            text-align: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            animation: profileGlow 2s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes profileGlow {
+            from { box-shadow: 0 0 20px rgba(184, 134, 11, 0.5); }
+            to { box-shadow: 0 0 40px rgba(184, 134, 11, 0.8); }
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(184, 134, 11, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #b8860b;
+            margin-bottom: 1rem;
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .service-card h3 {
+            color: #b8860b;
+            font-family: 'Amiri', serif;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Audio Section */
+        .audio-section {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .nasheed-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nasheed-card:hover {
+            transform: scale(1.05);
+        }
+
+        .nasheed-cover {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            border-radius: 20px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nasheed-cover::before {
+            content: '♪';
+            position: absolute;
+            animation: musicNote 2s ease-in-out infinite;
+        }
+
+        @keyframes musicNote {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            color: #b8860b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .nasheed-card:hover .play-button {
+            opacity: 1;
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: white;
+        }
+
+        /* Nasheed Links */
+        .nasheed-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            color: white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .nasheed-link:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.2), rgba(218, 165, 32, 0.1));
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+            color: #b8860b;
+        }
+
+        .nasheed-link span:first-child {
+            font-size: 1.2rem;
+        }
+        .social-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-link {
+            display: block;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.3) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .social-link:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: #b8860b;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #b8860b;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #b8860b;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(184, 134, 11, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: #b8860b;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-text">بسم الله الرحمن الرحيم</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="C:\Users\Ahmed\OneDrive\Desktop\file\Picsart_25-01-05_00-00-55-147.png" alt="لوجو الشيخ إبراهيم" class="logo-img">
+                الشيخ إبراهيم عبد الكافي
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عني</a></li>
+                <li><a href="#services">خدماتي</a></li>
+                <li><a href="#audio">أعمالي</a></li>
+                <li><a href="#gallery">معرض الصور</a></li>
+                <li><a href="#contact">تواصل معي</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="floating-elements">
+            <div class="floating-element">🕌</div>
+            <div class="floating-element">📿</div>
+            <div class="floating-element">☪️</div>
+        </div>
+        <div class="hero-content glass">
+            <h1>إبراهيم أحمد عبد العظيم</h1>
+            <div class="hero-title">قارئ للقرآن الكريم ومعلم له</div>
+            <p>منشد وإمام ومعلم للمواد الشرعية والتربية الدينية<br>
+            مدرس للعرب والأجانب • خبرة أكثر من 7 سنوات</p>
+            <div class="hadith">
+                "خيركم من تعلم القرآن وعلمه" - صدق رسول الله ﷺ
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">عني</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>نبذة شخصية</h3>
+                    <p>أنا إبراهيم أحمد عبد العظيم، المعروف في وسائل التواصل الاجتماعي باسم إبراهيم عبد الكافي. قارئ للقرآن الكريم ومعلم له، ومنشد ديني، وإمام مساجد.</p>
+                    
+                    <h3>التعليم</h3>
+                    <p>طالب في كلية الشريعة والقانون - جامعة الأزهر الشريف فرع القاهرة، قسم الشريعة والقانون باللغة الإنجليزية.</p>
+                    
+                    <h3>الخبرة التعليمية</h3>
+                    <p>أقوم بتدريس القرآن الكريم وعلومه والمواد الشرعية للعرب والأجانب منذ أكثر من 7 سنوات للعرب و5 سنوات للأجانب. علمت أكثر من 100 طالب وطالبة من مختلف الجنسيات.</p>
+
+                    <h3>الإجازات</h3>
+                    <p>قرأت على مشايخ مجازة كثيرة منهم الشيخ ياسر والشيخ عمرو أحمد والشيخ جمعة، وأكدوا لي صحة قراءتي وإجازتي للتعليم والتصحيح.</p>
+                </div>
+                
+                <div class="profile-card glass">
+                    <div class="profile-image">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\ibrahem.elkafy-20230403-0001.jpg" alt="الشيخ إبراهيم عبد الكافي" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <h3 style="color: #b8860b; font-family: 'Amiri', serif;">إبراهيم عبد الكافي</h3>
+                    <p style="color: rgba(255,255,255,0.8);">قارئ القرآن الكريم ومعلمه</p>
+                    
+                    <!-- معرض الصور الشخصية -->
+                    <div class="personal-gallery" style="margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\IMG_9244.JPG" alt="الشيخ إبراهيم" style="width: 100%; height: 80px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\IMG_20250806_223621.jpg" alt="الشيخ إبراهيم" style="width: 100%; height: 80px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\IMG_20250806_224117.jpg" alt="الشيخ إبراهيم" style="width: 100%; height: 80px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\متناسق.png" alt="لوجو الشيخ" style="width: 100%; height: 80px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Section -->
+    <section id="audio" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">أعمالي الصوتية</h2>
+            <div class="audio-section">
+                <div class="nasheed-card glass" onclick="playNasheed()">
+                    <div class="nasheed-cover" id="nasheedCover">
+                        <img src="C:\Users\Ahmed\OneDrive\Desktop\file\20250623_064848.jpg" alt="غلاف صرخة مسلم" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;">
+                        <button class="play-button">▶</button>
+                    </div>
+                    <h3 style="color: #b8860b; font-family: 'Amiri', serif; margin-bottom: 1rem;">صرخة مسلم</h3>
+                    <p style="color: rgba(255,255,255,0.8);">أنشودة من تأليف وتلحين وأداء الشيخ إبراهيم عبد الكافي</p>
+                    
+                    <!-- روابط الأنشودة -->
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://open.spotify.com/artist/69y2plQYumpvM7Dipuq0aj?si=2LrmqG3_QFuxuM6bZ4oCPQ" target="_blank" class="nasheed-link glass">
+                            <span>🎵</span>
+                            <span>Spotify</span>
+                        </a>
+                        <a href="https://on.soundcloud.com/VHGGKu93Kt02ID3KwZ" target="_blank" class="nasheed-link glass">
+                            <span>🔊</span>
+                            <span>SoundCloud</span>
+                        </a>
+                        <a href="https://youtube.com/@ibrahem.abdulkafy" target="_blank" class="nasheed-link glass">
+                            <span>📺</span>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- مقطع صوتي قرآني -->
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #b8860b; font-family: 'Amiri', serif; margin-bottom: 2rem; text-align: center;">تسجيلات القرآن الكريم</h3>
+                    <div class="audio-player glass" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+                        <h4 style="color: #daa520; margin-bottom: 1rem; font-family: 'Amiri', serif;">مِّنَ ٱلْمُؤْمِنِينَ رِجَالٌ صَدَقُوا مَا عَـٰهَدُوا ٱللَّهَ عَلَيْهِ</h4>
+                        <audio controls style="width: 100%; margin-bottom: 1rem;" autoplay>
+                            <source src="C:\Users\Ahmed\OneDrive\Desktop\file\الاحزاب1_01.wav" type="audio/wav">
+                            المتصفح لا يدعم عنصر الصوت
+                        </audio>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            تلاوة من سورة الأحزاب - بصوت الشيخ إبراهيم عبد الكافي
+                        </p>
+                    </div>
+                    
+                    <!-- تسجيل صلاة العشاء -->
+                    <div class="audio-player glass" style="max-width: 600px; margin: 2rem auto 0; padding: 2rem; text-align: center;">
+                        <h4 style="color: #daa520; margin-bottom: 1rem;">صلاة العشاء - سورة الحج</h4>
+                        <audio controls style="width: 100%; margin-bottom: 1rem;">
+                            <source src="#" type="audio/mpeg">
+                            المتصفح لا يدعم عنصر الصوت
+                        </audio>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            <a href="https://on.soundcloud.com/5xjcW9OlxuTqDgJr18" target="_blank" style="color: #b8860b;">استمع على ساوند كلاود</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- فيديو مش ناوي تبطل خداع -->
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #b8860b; font-family: 'Amiri', serif; margin-bottom: 2rem; text-align: center;">فيديوهات تعليمية</h3>
+                    <div class="video-player glass" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+                        <h4 style="color: #daa520; margin-bottom: 1rem;">مش ناوي تبطل خداع</h4>
+                        <video controls style="width: 100%; max-height: 300px; border-radius: 15px; margin-bottom: 1rem;">
+                            <source src="C:\Users\Ahmed\OneDrive\Desktop\file\مش ناوي تبطل خداع [D24190F].mp4" type="video/mp4">
+                            المتصفح لا يدعم عنصر الفيديو
+                        </video>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            محاضرة تربوية - الشيخ إبراهيم عبد الكافي
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Gallery Section -->
+    <section id="gallery" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">معرض أعمال التصوير</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 3rem; font-size: 1.1rem;">
+                تصوير المناظر الطبيعية والمساجد الأثرية لتوثيق الجمال المعماري الإسلامي
+            </p>
+            
+            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_173440_HEAIKO Edit.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">منظر طبيعي خلاب</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">من أعمال التصوير الفوتوغرافي</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_173446_HEAIKO Edit.PORTRAIT.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">لقطة بورتريه طبيعية</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">تصوير احترافي للمناظر</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_173455_HEAIKO Edit.PORTRAIT.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">جمال الطبيعة</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">توثيق اللحظات الجميلة</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_180945_HEAIKO Edit.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">منظر غروب الشمس</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">لحظات سحرية في الطبيعة</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_182001_HEAIKO Edit.PORTRAIT.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">تفاصيل طبيعية</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">دقة في التصوير والإضاءة</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\LMC_20250802_182012_HEAIKO Edit.PORTRAIT.jpg" alt="تصوير طبيعي" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">لقطة فنية</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">إبداع في زاوية التصوير</p>
+                </div>
+                
+                <div class="gallery-item glass" style="padding: 1rem; text-align: center;">
+                    <img src="C:\Users\Ahmed\OneDrive\Desktop\file\photo_2023-03-16_17-53-29.jpg" alt="تصوير معماري" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease;" onclick="openImageModal(this.src)">
+                    <h4 style="color: #b8860b; margin: 1rem 0;">تصوير معماري</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">توثيق الجمال المعماري</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; cursor: pointer;" onclick="closeImageModal()">
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem;">
+            <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px;">
+        </div>
+        <button onclick="closeImageModal()" style="position: absolute; top: 20px; right: 20px; background: rgba(184,134,11,0.8); color: white; border: none; padding: 10px 15px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;">×</button>
+    </div>
+    <section id="social" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">تابعني على</h2>
+            <div class="social-section">
+                <div class="social-grid">
+                    <a href="https://www.tiktok.com/@ibrahem.abdulkafy" target="_blank" class="social-link glass">
+                        <span class="social-icon">📱</span>
+                        <div>TikTok</div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/ibrahem.abdulkafy/" target="_blank" class="social-link glass">
+                        <span class="social-icon">📷</span>
+                        <div>Instagram</div>
+                    </a>
+                    
+                    <a href="https://youtube.com/@ibrahem.abdulkafy" target="_blank" class="social-link glass">
+                        <span class="social-icon">📺</span>
+                        <div>YouTube</div>
+                    </a>
+                    
+                    <a href="https://facebook.com/ibrahemahmed.elkafy/" target="_blank" class="social-link glass">
+                        <span class="social-icon">👥</span>
+                        <div>Facebook</div>
+                    </a>
+                    
+                    <a href="https://discord.com/invite/cSADEEWJRz" target="_blank" class="social-link glass">
+                        <span class="social-icon">💬</span>
+                        <div>Discord</div>
+                    </a>
+                    
+                    <a href="https://open.spotify.com/artist/69y2plQYumpvM7Dipuq0aj?si=2LrmqG3_QFuxuM6bZ4oCPQ" target="_blank" class="social-link glass">
+                        <span class="social-icon">🎵</span>
+                        <div>Spotify</div>
+                    </a>
+                    
+                    <a href="https://on.soundcloud.com/VHGGKu93Kt02ID3KwZ" target="_blank" class="social-link glass">
+                        <span class="social-icon">🔊</span>
+                        <div>SoundCloud</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">تواصل معي</h2>
+            <div class="contact-form">
+                <form class="glass" style="padding: 2rem;">
+                    <div class="form-group">
+                        <label for="name">الاسم</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 الشيخ إبراهيم عبد الكافي - قارئ القرآن الكريم ومعلمه</p>
+            <div style="margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; align-items: center;">
+                <img src="C:\Users\Ahmed\OneDrive\Desktop\file\متناسق.png" alt="لوجو 1" style="width: 30px; height: 30px; border-radius: 50%; opacity: 0.7;">
+                <img src="C:\Users\Ahmed\OneDrive\Desktop\file\Picsart_24-12-19_09-46-47-115.png" alt="لوجو 2" style="width: 30px; height: 30px; border-radius: 50%; opacity: 0.7;">
+            </div>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+                "وقل اعملوا فسيرى الله عملكم ورسوله والمؤمنون"
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Nasheed Player
+        function playNasheed() {
+            const cover = document.getElementById('nasheedCover');
+            const playButton = cover.querySelector('.play-button');
+            
+            // Animate cover
+            cover.style.transform = 'scale(1.1) rotateY(180deg)';
+            setTimeout(() => {
+                cover.style.transform = 'scale(1) rotateY(0deg)';
+            }, 300);
+
+            // Change play button
+            if (playButton.innerHTML === '▶') {
+                playButton.innerHTML = '⏸';
+                // Here you would integrate with actual audio player
+                alert('يمكنك الاستماع لأنشودة "صرخة مسلم" على منصات التواصل الاجتماعي');
+            } else {
+                playButton.innerHTML = '▶';
+            }
+        }
+
+        // Contact Form
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Here you would typically send the data to a server
+            alert('شكراً لك! سيتم الرد عليك في أقرب وقت ممكن إن شاء الله');
+            this.reset();
+        });
+
+        // Add some dynamic animations
+        function createFloatingParticles() {
+            const particles = ['✨', '🌟', '💫', '⭐'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '100vh';
+                particle.style.fontSize = '1.5rem';
+                particle.style.opacity = '0.3';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+                
+                document.body.appendChild(particle);
+                
+                particle.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.3 },
+                    { transform: 'translateY(-100vh) rotate(360deg)', opacity: 0 }
+                ], {
+                    duration: 8000 + Math.random() * 4000,
+                    easing: 'linear'
+                }).onfinish = () => {
+                    particle.remove();
+                };
+            }, 3000);
+        }
+
+        // Start particle animation after page load
+        setTimeout(createFloatingParticles, 3000);
+
+        // Add typing effect for hero title
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect
+        setTimeout(() => {
+            const heroTitle = document.querySelector('.hero-title');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 100);
+        }, 3000);
+
+        // Add parallax effect to hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-background');
+            const floatingElements = document.querySelectorAll('.floating-element');
+            
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            floatingElements.forEach((element, index) => {
+                const speed = 0.2 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add service card animations
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(135deg, rgba(184, 134, 11, 0.1), rgba(218, 165, 32, 0.05))';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(255, 255, 255, 0.05)';
+            });
+            
+            // Stagger animation on scroll
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+
+        // Image Modal Functions
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+
+        // Gallery hover effects
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.filter = 'brightness(1.1)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.filter = 'brightness(1)';
+            });
+        });
+
+        // Personal gallery hover effects
+        document.querySelectorAll('.personal-gallery img').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+                this.style.boxShadow = '0 15px 35px rgba(184, 134, 11, 0.3)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Services Section -->
+    <section id="services" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">خدماتي</h2>
+            <div class="services-grid">
+                <div class="service-card glass">
+                    <div class="service-icon">📖</div>
+                    <h3>تعليم القرآن الكريم</h3>
+                    <p>تحفيظ وتعليم القرآن الكريم وعلومه للعرب والأجانب مع تصحيح التلاوة والتجويد</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-icon">🎓</div>
+                    <h3>تدريس المواد الشرعية</h3>
+                    <p>تدريس الفقه والتفسير والحديث والسيرة وأصول الدين للمراحل الإعدادية والثانوية الأزهرية</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-icon">🕌</div>
+                    <h3>الإمامة والخطابة</h3>
+                    <p>إمام لأكثر من 6 مساجد، متاح كإمام بديل أو دائم للمساجد التي تحتاج إمام</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-icon">🎵</div>
+                    <h3>الإنشاد الديني</h3>
+                    <p>منشد ديني، أشهر أعمالي أنشودة "صرخة مسلم" من تأليف وتلحين وأداء</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-icon">📚</div>
+                    <h3>التربية الدينية</h3>
+                    <p>تدريس مادة التربية الدينية الإسلامية لطلاب التعليم العام في المراحل الإعدادية والثانوية</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-icon">📷</div>
+                    <h3>التصوير الفوتوغرافي
